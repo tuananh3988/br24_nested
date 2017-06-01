@@ -22,4 +22,18 @@ class TreeNested extends BaseModel{
     public function restore() {
         
     }
+    
+    public function createTree($category, $left = 0, $right = null) {
+        $tree = array();
+        foreach ($category as $cat => $range) {
+            unset($category[$cat]);
+            if ($range['left'] == $left + 1 && (is_null($right) || $range['right'] < $right)) {
+
+                $tree[$cat] = $this->createTree($category, $range['left'], $range['right']);
+                $left = $range['right'];
+            }
+        }
+        
+        return $tree;
+    }
 }
