@@ -59,7 +59,7 @@ class TreeNested extends BaseModel {
     */
     public function restore() {
         $sql = file_get_contents($this->config['backup_dir']);
-        $qr = $this->db->exec($sql);
+        return $this->db->exec($sql);
     }
     
     /**
