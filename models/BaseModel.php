@@ -13,8 +13,11 @@
  */
 class BaseModel {
     public $db;
-    
-    function __construct($db) {
+    public $config;
+            
+    function __construct($config) {
+        $this->config = $config;
+        $db = $config['db'];
         $this->db = new PDO("mysql:host={$db['host']};dbname={$db['db_name']};charset=utf8mb4", $db['username'], $db['password']);
     }
 }
