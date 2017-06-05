@@ -38,7 +38,7 @@ if (strtoupper($_SERVER['REQUEST_METHOD']) == 'POST' && !$isError) {
     }
     
 }
-//list folder
+//get list folder
 $data = $treeNested->getAll();
 $tree = $treeNested->createTree($data);
 $list = Utility::createList($tree, $data);
